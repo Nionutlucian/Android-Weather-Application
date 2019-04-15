@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Weather Aplication</string>
+    <string name="google_map_api_key">AIzaSyAxs6fGouh4UDpjqIXSo5AjjU76rlUs6oQ</string>
+    <string name="weather_api_key">66a3d14f5e38710797973f4b8d476458</string>
 </resources>

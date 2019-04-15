@@ -12,26 +12,36 @@
     tools:context=".MainActivity"
     android:background="@color/bg">
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:inputType="text"
-        android:hint="Search the city"
-        android:textColor="@color/textDay"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:drawableRight="@android:drawable/ic_menu_search"
-        tools:ignore="MissingConstraints"
-        />
+    <android.support.v7.widget.CardView
+    android:id="@+id/idCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_marginTop="5dp"
+    app:cardCornerRadius="4dp">
+    <fragment android:id="@+id/autocomplete_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+    />
+    </android.support.v7.widget.CardView>
+    <!--<TextView-->
+        <!--android:id="@+id/placeName"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="No Place selected"-->
+        <!--android:textSize="20dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
     <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="CRAIOVA"
-        android:layout_below="@id/search"
+        android:text="Craiova"
+        android:layout_below="@id/idCardView"
         android:textColor="@color/textDay"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -63,12 +73,12 @@
         tools:ignore="MissingConstraints"
         />
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/currentImage"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@id/weekDay"
         android:layout_marginTop="1dp"
-        android:src="@drawable/sunny"
+        android:src="@drawable/a01d"
         android:padding="1dp"/>
 
     <TextView
@@ -76,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="18°"
-        android:layout_below="@id/image"
+        android:layout_below="@id/currentImage"
         android:layout_centerHorizontal="true"
         android:textColor="@color/textDay"
         android:textStyle="bold"
@@ -93,10 +103,275 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginTop="1dp"/>
+    <LinearLayout
+        android:id="@+id/nextHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forecast"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/firstInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TUESDAY"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/iconHour1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/sunny"
+                android:padding="1dp"/>
+            <TextView
+                android:id="@+id/firstIntervalTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/firstIntervalDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/secondInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WEDNESDAY"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/iconHour2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/cloud"
+                android:padding="1dp"/>
+            <TextView
+                android:id="@+id/secondIntervalTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/secondIntervalDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/thirdInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THURSDAY"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/iconHour3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/storm"
+                android:padding="1dp"/>
+            <TextView
+                android:id="@+id/thirdIntervalTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/thirdIntervalDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/nextDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nextHours"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/day1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TUESDAY"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/iconDay1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/sunny"
+                android:padding="1dp"/>
+            <TextView
+                android:id="@+id/day1Temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/day1Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/day2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WEDNESDAY"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/iconDay2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/cloud"
+                android:padding="1dp"/>
+            <TextView
+                android:id="@+id/day2Temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/day2Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/day3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THURSDAY"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/iconDay3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/storm"
+                android:padding="1dp"/>
+            <TextView
+                android:id="@+id/day3Temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/day3Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21°/14°"
+                android:textSize="16sp"
+                android:textColor="@color/textDay"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
     <TextView
         android:id="@+id/indoor"
-        android:layout_below="@id/forecast"
+        android:layout_below="@id/nextDays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -126,104 +401,5 @@
         android:textStyle="bold"
         android:textSize="30dp"
         android:layout_marginTop="1dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/degreeIndoor"
-        android:weightSum="3"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="40dp">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TUESDAY"
-                android:textSize="16sp"
-                android:textColor="@color/textDay"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-            <ImageView
-                android:id="@+id/iconDay1"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="1dp"
-                android:src="@drawable/sunny"
-                android:padding="1dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21°/14°"
-                android:textSize="16sp"
-                android:textColor="@color/textDay"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WEDNESDAY"
-                android:textSize="16sp"
-                android:textColor="@color/textDay"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-            <ImageView
-                android:id="@+id/iconDay2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="1dp"
-                android:src="@drawable/cloud"
-                android:padding="1dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21°/14°"
-                android:textSize="16sp"
-                android:textColor="@color/textDay"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="THURSDAY"
-                android:textSize="16sp"
-                android:textColor="@color/textDay"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-            <ImageView
-                android:id="@+id/iconDay3"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="1dp"
-                android:src="@drawable/storm"
-                android:padding="1dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21°/14°"
-                android:textSize="16sp"
-                android:textColor="@color/textDay"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
-    </LinearLayout>
 </RelativeLayout>
 </ScrollView>
